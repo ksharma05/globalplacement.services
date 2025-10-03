@@ -11,7 +11,7 @@ const Header = () => {
         <Link to="/" className='text-white hover:text-blue-300'>Home</Link>
         <Link to="/about" className='text-white hover:text-blue-300'>About</Link>
         <Link to="/contact" className='text-white hover:text-blue-300'>Contact</Link>
-        <Link to="/jobs" className='text-white hover:text-blue-300'>Jobs</Link>
+        {/* <Link to="/jobs" className='text-white hover:text-blue-300'>Jobs</Link> */}
       </nav>
 
       <div>

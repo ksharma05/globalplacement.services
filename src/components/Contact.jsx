@@ -8,9 +8,9 @@ const Contact = () => {
       
       <div className="mb-4">
         <h2 className="text-xl font-semibold">Contact Information</h2>
-        <p>Email: info@staffingagency.com</p>
-        <p>Phone: +1 (555) 123-4567</p>
-        <p>Address: 123 Staffing Lane, City, Country</p>
+        <p>Email: bss@globalplacement.services</p>
+        <p>Phone: +91-9829055830</p>
+        <p>Address: Global Placement Services, Bhagwati Market, <br />Kishan Circle, Ramu ka Bas, <br/>Jaipur Road, Sikar Rajasthan 332021 </p>
       </div>
 
       <form className="bg-white p-6 rounded shadow-md">
