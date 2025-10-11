@@ -5,94 +5,151 @@ import Banner3 from '../assets/banner3.jpg';
 import Banner4 from '../assets/banner4.jpg';
 import Banner5 from '../assets/banner5.jpg';
 import Banner6 from '../assets/banner6.jpg';
+import useContent from '../hooks/useContent';
 
 const Hero = ()=> {
+  const { hero, stats } = useContent();
   return (
-    <div className="relative overflow-hidden bg-white">
-      <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
-        <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
-          <div className="sm:max-w-lg">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Welcome to Our Staffing Agency
-            </h1>
-            <p className="mt-4 text-xl text-gray-500">
-              Connecting you with the best blue-collar talent.
-            </p>
-          </div>
-          <div>
-            <div className="mt-10">
-              {/* Decorative image grid */}
-              <div
-                aria-hidden="true"
-                className="pointer-events-none lg:absolute lg:inset-y-0 lg:mx-auto lg:w-full lg:max-w-7xl"
-              >
-                <div className="absolute transform sm:top-0 sm:left-1/2 sm:translate-x-8 lg:top-1/2 lg:left-1/2 lg:translate-x-8 lg:-translate-y-1/2">
-                  <div className="flex items-center space-x-6 lg:space-x-8">
-                    <div className="grid shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                      <div className="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
-                        <img
-                          alt=""
-                          src={Banner5}
-                          className="size-full object-cover"
-                        />
-                      </div>
-                      <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
-                          alt=""
-                          src={Banner1}
-                          className="size-full object-cover"
-                        />
-                      </div>
-                    </div>
-                    <div className="grid shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                      <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
-                          alt=""
-                          src={Banner2}
-                          className="size-full object-cover"
-                        />
-                      </div>
-                      <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
-                          alt=""
-                          src={Banner6}
-                          className="size-full object-cover"
-                        />
-                      </div>
-                      <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
-                          alt=""
-                          src={Banner3}
-                          className="size-full object-cover"
-                        />
-                      </div>
-                    </div>
-                    <div className="grid shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                      <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
-                          alt=""
-                          src={Banner4}
-                          className="size-full object-cover"
-                        />
-                      </div>
-                      <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
-                          alt=""
-                          src={Banner5}
-                          className="size-full object-cover"
-                        />
-                      </div>
-                    </div>
-                  </div>
+    <div className="hero min-h-screen bg-gradient-to-br from-base-100 via-base-100 to-base-200 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary/20 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
+        <div className="absolute top-1/4 right-1/4 w-60 h-60 bg-accent/15 rounded-full blur-2xl animate-pulse" style={{animationDelay: '2s'}}></div>
+        <div className="absolute bottom-1/4 left-1/4 w-40 h-40 bg-info/15 rounded-full blur-2xl animate-pulse" style={{animationDelay: '0.5s'}}></div>
+      </div>
+      
+      <div className="hero-content flex-col lg:flex-row-reverse max-w-7xl mx-auto relative z-10">
+        {/* Right side - Image Grid */}
+        <div className="lg:w-1/2">
+          <div className="flex items-center justify-center lg:justify-end">
+            <div className="grid grid-cols-2 gap-4 lg:gap-6">
+              <div className="grid grid-cols-1 gap-4 lg:gap-6">
+                <div className="h-32 w-32 lg:h-40 lg:w-40 overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group">
+                  <img
+                    alt="Skilled construction workers"
+                    src={Banner5}
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  {/* <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div> */}
+                </div>
+                <div className="h-32 w-32 lg:h-40 lg:w-40 overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group" style={{animationDelay: '0.1s'}}>
+                  <img
+                    alt="Manufacturing professionals"
+                    src={Banner1}
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  {/* <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div> */}
                 </div>
               </div>
+              <div className="grid grid-cols-1 gap-4 lg:gap-6">
+                <div className="h-32 w-32 lg:h-40 lg:w-40 overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group" style={{animationDelay: '0.2s'}}>
+                  <img
+                    alt="Healthcare workers"
+                    src={Banner2}
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  {/* <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div> */}
+                </div>
+                <div className="h-32 w-32 lg:h-40 lg:w-40 overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group" style={{animationDelay: '0.3s'}}>
+                  <img
+                    alt="Engineering specialists"
+                    src={Banner6}
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  {/* <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div> */}
+                </div>
+                <div className="h-32 w-32 lg:h-40 lg:w-40 overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group" style={{animationDelay: '0.4s'}}>
+                  <img
+                    alt="Hospitality staff"
+                    src={Banner3}
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  {/* <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div> */}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-              <a
-                href="#"
-                className="inline-block rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-center font-medium text-white hover:bg-indigo-700"
+        {/* Left side - Content */}
+        <div className="lg:w-1/2 text-center lg:text-left">
+          <div className="max-w-2xl">
+            {/* Trust Badge */}
+            <div className="badge badge-primary badge-lg mb-4 animate-bounce">
+              {hero.trustBadge}
+            </div>
+            
+            {/* Main Headline */}
+            <h1 className="text-4xl lg:text-6xl font-bold text-base-content mb-6">
+              {hero.headline.part1} <span className="gradient-text">{hero.headline.highlight1}</span> {hero.headline.part2}
+              <span className="gradient-text animate-delay-200"> {hero.headline.highlight2}</span>
+            </h1>
+            
+            {/* Subheading */}
+            <p className="text-lg lg:text-xl text-base-content/80 mb-8 leading-relaxed">
+              {hero.subheading}
+            </p>
+
+            {/* Key Benefits */}
+            <div className="flex flex-wrap gap-4 mb-8 justify-center lg:justify-start">
+              {hero.benefits.map((benefit, index) => (
+                <div 
+                  key={index}
+                  className="badge badge-outline badge-lg hover:badge-primary hover:scale-105 transition-all duration-300 cursor-default" 
+                  style={{animationDelay: `${index * 0.1}s`}}
+                >
+                  {benefit}
+                </div>
+              ))}
+            </div>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <button 
+                className="btn btn-primary btn-lg min-h-[48px] touch-manipulation"
+                aria-label="Find skilled workers for your business"
               >
-                Request Staff
-              </a>
+                <span className="flex items-center">
+                  Find Workers Now
+                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </span>
+              </button>
+              <button 
+                className="btn btn-outline btn-lg min-h-[48px] touch-manipulation"
+                aria-label="Find job opportunities with our clients"
+              >
+                <span className="flex items-center">
+                  Find Jobs
+                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0H8m8 0v2a2 2 0 01-2 2H10a2 2 0 01-2-2V6" />
+                  </svg>
+                </span>
+              </button>
+            </div>
+
+            {/* Trust Indicators */}
+            <div className="mt-8 pt-6 border-t border-base-300">
+              <p className="text-sm text-base-content/60 mb-4">
+                {hero.trustIndicators.label}
+              </p>
+              <div className="flex justify-center lg:justify-start items-center space-x-6 opacity-60">
+                {hero.trustIndicators.industries.map((industry, index) => (
+                  <div key={index} className="text-xs font-semibold">{industry}</div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

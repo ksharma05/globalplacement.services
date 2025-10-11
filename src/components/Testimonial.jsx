@@ -6,10 +6,9 @@ const Testimonial = () => {
     const featuredTestimonial = {
   body: 'Our staffing agency has transformed the way businesses find skilled blue-collar workers, delivering reliable and efficient talent solutions.',
   author: {
-    name: 'Brenna Goyette',
-    handle: 'brennagoyette',
-    imageUrl:
-      'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=1024&h=1024&q=80',
+    name: 'Priya Sharma',
+    handle: 'priyasharma',
+    imageUrl: '',
     logoUrl: 'https://tailwindcss.com/plus-assets/img/logos/savvycal-logo-gray-900.svg',
   },
 }
@@ -19,28 +18,25 @@ const Testimonial = () => {
       {
         body: 'The staffing agency provided us with highly qualified workers who exceeded our expectations and helped us meet tight deadlines.',
         author: {
-          name: 'Leslie Alexander',
-          handle: 'lesliealexander',
-          imageUrl:
-            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          name: 'Arjun Patel',
+          handle: 'arjunpatel',
+          imageUrl: '',
         },
       },
       {
         body: 'Their personalized approach and quick response time made hiring blue-collar workers seamless and stress-free.',
         author: {
-          name: 'Michael Foster',
-          handle: 'michaelfoster',
-          imageUrl:
-            'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          name: 'Rajesh Kumar',
+          handle: 'rajeshkumar',
+          imageUrl: '',
         },
       },
       {
         body: 'Reliable, professional, and efficient staffing solutions that helped our business grow steadily.',
         author: {
-          name: 'Dries Vincent',
-          handle: 'driesvincent',
-          imageUrl:
-            'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          name: 'Vikram Singh',
+          handle: 'vikramsingh',
+          imageUrl: '',
         },
       },
     ],
@@ -48,19 +44,17 @@ const Testimonial = () => {
       {
         body: 'The team was attentive to our needs and provided excellent candidates for our manufacturing projects.',
         author: {
-          name: 'Lindsay Walton',
-          handle: 'lindsaywalton',
-          imageUrl:
-            'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          name: 'Sunita Devi',
+          handle: 'sunitadevi',
+          imageUrl: '',
         },
       },
       {
         body: 'A trusted partner for staffing solutions, delivering quality workers on time and within budget.',
         author: {
-          name: 'Courtney Henry',
-          handle: 'courtneyhenry',
-          imageUrl:
-            'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          name: 'Anita Gupta',
+          handle: 'anitagupta',
+          imageUrl: '',
         },
       },
     ],
@@ -70,19 +64,17 @@ const Testimonial = () => {
       {
         body: 'Their staffing services helped us scale our operations quickly and efficiently.',
         author: {
-          name: 'Tom Cook',
-          handle: 'tomcook',
-          imageUrl:
-            'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          name: 'Amit Kumar',
+          handle: 'amitkumar',
+          imageUrl: '',
         },
       },
       {
         body: 'Professional and reliable workers who consistently met our quality standards.',
         author: {
-          name: 'Whitney Francis',
-          handle: 'whitneyfrancis',
-          imageUrl:
-            'https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          name: 'Deepika Reddy',
+          handle: 'deepikareddy',
+          imageUrl: '',
         },
       },
     ],
@@ -90,28 +82,25 @@ const Testimonial = () => {
       {
         body: 'Excellent communication and support throughout the hiring process.',
         author: {
-          name: 'Leonard Krasner',
-          handle: 'leonardkrasner',
-          imageUrl:
-            'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          name: 'Suresh Verma',
+          handle: 'sureshverma',
+          imageUrl: '',
         },
       },
       {
         body: 'Highly recommend their staffing services for any blue-collar workforce needs.',
         author: {
-          name: 'Floyd Miles',
-          handle: 'floydmiles',
-          imageUrl:
-            'https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          name: 'Pradeep Yadav',
+          handle: 'pradeepyadav',
+          imageUrl: '',
         },
       },
       {
         body: 'Consistently delivered quality candidates that helped us maintain high productivity.',
         author: {
-          name: 'Emily Selman',
-          handle: 'emilyselman',
-          imageUrl:
-            'https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          name: 'Kavita Joshi',
+          handle: 'kavitajoshi',
+          imageUrl: '',
         },
       },
     ],
