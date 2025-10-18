@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Hero from './Hero';
 import Stats from './Stats';
@@ -6,6 +6,7 @@ import OurVerticals from './OurVerticals';
 import SkeletonLoader from './SkeletonLoader';
 import ErrorBoundary from './ErrorBoundary';
 import FloatingActionButton from './FloatingActionButton';
+import ConsultationModal from './ConsultationModal';
 import useContent from '../hooks/useContent';
 
 // Lazy load below-the-fold components
@@ -16,7 +17,20 @@ const Testimonial = lazy(() => import('./Testimonial'));
 
 const Home = () => {
   const imageUrls = useSelector(state => state.slides.imageUrls);
-  const { services, whyChooseUs, process, ctas } = useContent();
+  const { services, whyChooseUs, process, ctas, getContactInfo } = useContent();
+  const [showConsultationModal, setShowConsultationModal] = useState(false);
+  const { phoneHref } = getContactInfo();
+
+  const handleConsultationClick = () => {
+    // First trigger the call
+    window.location.href = phoneHref;
+    // Then show the modal
+    setShowConsultationModal(true);
+  };
+
+  const handleProcessClick = () => {
+    setShowConsultationModal(true);
+  };
     
   return (
     <div className="flex flex-col items-center">
@@ -81,6 +95,7 @@ const Home = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button 
+              onClick={handleConsultationClick}
               className="btn btn-primary btn-lg min-h-[48px] touch-manipulation"
               aria-label="Get a free consultation for your staffing needs"
             >
@@ -92,6 +107,7 @@ const Home = () => {
               </span>
             </button>
             <button 
+              onClick={handleProcessClick}
               className="btn btn-outline btn-lg min-h-[48px] touch-manipulation"
               aria-label="Learn about our staffing process"
             >
@@ -167,7 +183,7 @@ const Home = () => {
             {ctas.project.description}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button 
+            {/* <button 
               className="btn btn-secondary btn-lg min-h-[48px] touch-manipulation"
               aria-label="Start your staffing project with us"
             >
@@ -177,7 +193,7 @@ const Home = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </span>
-            </button>
+            </button> */}
             <button 
               className="btn btn-outline btn-lg min-h-[48px] touch-manipulation"
               aria-label="Download our company brochure"
@@ -271,6 +287,12 @@ const Home = () => {
 
       {/* Floating Action Button */}
       <FloatingActionButton />
+
+      {/* Consultation Modal */}
+      <ConsultationModal 
+        isOpen={showConsultationModal} 
+        onClose={() => setShowConsultationModal(false)} 
+      />
     </div>
   );
 };

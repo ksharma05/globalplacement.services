@@ -88,7 +88,7 @@ const Footer = () => {
                   Contact
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link 
                   to="/jobs" 
                   className="text-base-content/80 hover:text-primary transition-colors duration-200 text-sm"
@@ -96,7 +96,7 @@ const Footer = () => {
                 >
                   Jobs
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
 

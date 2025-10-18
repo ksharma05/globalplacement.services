@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import useContent from '../hooks/useContent';
+import ConsultationModal from './ConsultationModal';
 
 const Contact = () => {
-  const { contact, faqs } = useContent();
+  const { contact, faqs, getContactInfo } = useContent();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -14,6 +15,15 @@ const Contact = () => {
   });
 
   const [formStatus, setFormStatus] = useState('idle'); // idle, submitting, success, error
+  const [showConsultationModal, setShowConsultationModal] = useState(false);
+  const { phoneHref } = getContactInfo();
+
+  const handleConsultationClick = () => {
+    // First trigger the call
+    window.location.href = phoneHref;
+    // Then show the modal
+    setShowConsultationModal(true);
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -425,6 +435,7 @@ const Contact = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button 
+              onClick={handleConsultationClick}
               className="btn btn-primary btn-lg min-h-[48px] touch-manipulation"
               aria-label="Get a free consultation"
             >
@@ -450,6 +461,12 @@ const Contact = () => {
           </div>
         </div>
       </section>
+
+      {/* Consultation Modal */}
+      <ConsultationModal 
+        isOpen={showConsultationModal} 
+        onClose={() => setShowConsultationModal(false)} 
+      />
     </div>
   );
 }

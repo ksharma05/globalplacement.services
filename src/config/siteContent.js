@@ -65,7 +65,7 @@ export const siteContent = {
     trustBadge: "⭐ Trusted by 500+ Companies",
     headline: {
       part1: "Find Top",
-      highlight1: "Blue-Collar",
+      highlight1: "Man-Power",
       part2: "Talent in",
       highlight2: "24 Hours"
     },
@@ -243,23 +243,21 @@ export const siteContent = {
   // Team Members
   team: [
     {
-      initials: "JS",
-      name: "John Smith",
-      position: "Founder & CEO",
-      description: "15+ years in staffing industry. Passionate about creating opportunities for skilled workers and helping businesses grow."
+      initials: "SS",
+      name: "Er. Surendra Singh Shekhawat (Civil Engineering)",
+      position: "Owner & MD",
+      description: `15+ years in staffing industry.
+      Isolux(company) -> Projects : Highway and Railway Bridges
+      L&T(company) -> Projects : Bullet Train`
     },
     {
-      initials: "MJ",
-      name: "Maria Johnson",
-      position: "Head of Operations",
-      description: "Expert in workforce management with 12+ years experience. Ensures every placement meets our high standards."
+      initials: "BS",
+      name: "Er. Bhopal Singh Shekhawat (Mechanical Engineering)",
+      position: "General Manager",
+      description: `Retired from HMT(company) after 26 years of service.
+      Manpower consulatant with 15 years of experience with 
+      reputed company of manpower placement`
     },
-    {
-      initials: "DW",
-      name: "David Wilson",
-      position: "Client Relations Manager",
-      description: "Builds strong relationships with our clients, understanding their unique needs and delivering tailored solutions."
-    }
   ],
 
   // Company Values
@@ -413,6 +411,44 @@ export const siteContent = {
       title: "Ready to Get Started?",
       description: "Join hundreds of satisfied clients and thousands of successful candidates who trust us with their workforce needs."
     }
+  },
+
+  // Consultation Process
+  consultation: {
+    title: "Get Your Free Consultation",
+    description: "Follow these simple steps to get started with our expert staffing solutions",
+    steps: [
+      {
+        step: 1,
+        title: "Get on Call with Us",
+        description: "Click the call button to speak directly with our staffing experts. We're available 24/7 to discuss your immediate needs.",
+        icon: "📞",
+        action: "Call Now",
+        actionType: "call"
+      },
+      {
+        step: 2,
+        title: "Get an Appointment",
+        description: "Schedule a detailed consultation at your convenience. We'll prepare a customized staffing strategy for your business.",
+        icon: "📅",
+        action: "Schedule Meeting",
+        actionType: "schedule"
+      },
+      {
+        step: 3,
+        title: "Get the Consultation",
+        description: "Receive expert advice, customized solutions, and a detailed action plan tailored to your specific staffing requirements.",
+        icon: "💼",
+        action: "Start Consultation",
+        actionType: "consult"
+      }
+    ],
+    benefits: [
+      "Free 30-minute consultation",
+      "Customized staffing strategy",
+      "No obligation to proceed",
+      "Expert industry insights"
+    ]
   },
 
   // Legal Policies

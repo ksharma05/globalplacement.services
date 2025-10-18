@@ -62,5 +62,6 @@ export const selectTrustIndicators = (state) => state.content.data.trustIndicato
 export const selectFaqs = (state) => state.content.data.faqs;
 export const selectCtas = (state) => state.content.data.ctas;
 export const selectPolicies = (state) => state.content.data.policies;
+export const selectConsultation = (state) => state.content.data.consultation;
 
 export default contentSlice.reducer;

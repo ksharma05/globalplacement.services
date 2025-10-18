@@ -144,7 +144,7 @@ const About = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {team.map((member, index) => (
               <div key={index} className="card bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
                 <div className="card-body text-center p-6">
@@ -155,7 +155,7 @@ const About = () => {
                   </div>
                   <h3 className="card-title justify-center text-primary text-xl mb-2 group-hover:text-secondary transition-colors duration-300">{member.name}</h3>
                   <p className="text-base-content/70 font-medium mb-3">{member.position}</p>
-                  <p className="text-base-content/80 text-sm leading-relaxed">
+                  <p className="text-base-content/80 text-sm leading-relaxed whitespace-pre-line">
                     {member.description}
                   </p>
                 </div>

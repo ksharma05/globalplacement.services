@@ -17,7 +17,8 @@ import {
   selectTrustIndicators,
   selectFaqs,
   selectCtas,
-  selectPolicies
+  selectPolicies,
+  selectConsultation
 } from '../features/content/contentSlice';
 
 /**
@@ -48,6 +49,7 @@ export const useContent = () => {
   const faqs = useSelector(selectFaqs);
   const ctas = useSelector(selectCtas);
   const policies = useSelector(selectPolicies);
+  const consultation = useSelector(selectConsultation);
 
   // Utility functions for common content access patterns
   const getContactInfo = () => ({
@@ -93,6 +95,7 @@ export const useContent = () => {
     faqs,
     ctas,
     policies,
+    consultation,
     
     // Utility functions
     getContactInfo,

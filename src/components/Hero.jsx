@@ -1,81 +1,137 @@
 import React from 'react';
-import Banner1 from '../assets/banner1.jpg';
-import Banner2 from '../assets/banner2.jpg';
-import Banner3 from '../assets/banner3.jpg';
-import Banner4 from '../assets/banner4.jpg';
-import Banner5 from '../assets/banner5.jpg';
-import Banner6 from '../assets/banner6.jpg';
+import Image1 from '../assets/1.jpg';
+import Image2 from '../assets/2.jpg';
+import Image3 from '../assets/3.jpg';
+import Image4 from '../assets/4.jpg';
+import Image5 from '../assets/5.jpg';
+import Image6 from '../assets/6.jpg';
+import Image7 from '../assets/7.jpg';
+import Image8 from '../assets/8.jpg';
+import Image9 from '../assets/9.jpg';
+import Image10 from '../assets/10.jpg';
 import useContent from '../hooks/useContent';
 
 const Hero = ()=> {
   const { hero, stats } = useContent();
   return (
-    <div className="hero min-h-screen bg-gradient-to-br from-base-100 via-base-100 to-base-200 relative overflow-hidden">
+    <div className="hero min-h-full w-full bg-gradient-to-br from-base-100 via-base-100 to-base-200 relative overflow-hidden">
       {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary/20 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
         <div className="absolute top-1/4 right-1/4 w-60 h-60 bg-accent/15 rounded-full blur-2xl animate-pulse" style={{animationDelay: '2s'}}></div>
         <div className="absolute bottom-1/4 left-1/4 w-40 h-40 bg-info/15 rounded-full blur-2xl animate-pulse" style={{animationDelay: '0.5s'}}></div>
-      </div>
+      </div> */}
       
       <div className="hero-content flex-col lg:flex-row-reverse max-w-7xl mx-auto relative z-10">
         {/* Right side - Image Grid */}
         <div className="lg:w-1/2">
           <div className="flex items-center justify-center lg:justify-end">
-            <div className="grid grid-cols-2 gap-4 lg:gap-6">
-              <div className="grid grid-cols-1 gap-4 lg:gap-6">
-                <div className="h-32 w-32 lg:h-40 lg:w-40 overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group">
+            <div className="grid grid-cols-3 gap-3 lg:gap-4">
+              {/* First row */}
+              <div className="col-span-2">
+                <div className="h-32 w-full lg:h-40 overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group">
                   <img
                     alt="Skilled construction workers"
-                    src={Banner5}
+                    src={Image1}
                     className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
                     loading="lazy"
                     decoding="async"
                   />
-                  {/* <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div> */}
-                </div>
-                <div className="h-32 w-32 lg:h-40 lg:w-40 overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group" style={{animationDelay: '0.1s'}}>
-                  <img
-                    alt="Manufacturing professionals"
-                    src={Banner1}
-                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  {/* <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div> */}
                 </div>
               </div>
-              <div className="grid grid-cols-1 gap-4 lg:gap-6">
-                <div className="h-32 w-32 lg:h-40 lg:w-40 overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group" style={{animationDelay: '0.2s'}}>
+              <div className="col-span-1">
+                <div className="h-32 w-full lg:h-40 overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group" style={{animationDelay: '0.1s'}}>
+                  <img
+                    alt="Manufacturing professionals"
+                    src={Image2}
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+              
+              {/* Second row */}
+              <div className="col-span-1">
+                <div className="h-32 w-full lg:h-40 overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group" style={{animationDelay: '0.2s'}}>
                   <img
                     alt="Healthcare workers"
-                    src={Banner2}
+                    src={Image3}
                     className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
                     loading="lazy"
                     decoding="async"
                   />
-                  {/* <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div> */}
                 </div>
-                <div className="h-32 w-32 lg:h-40 lg:w-40 overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group" style={{animationDelay: '0.3s'}}>
-                  <img
-                    alt="Engineering specialists"
-                    src={Banner6}
-                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  {/* <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div> */}
-                </div>
-                <div className="h-32 w-32 lg:h-40 lg:w-40 overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group" style={{animationDelay: '0.4s'}}>
+              </div>
+              <div className="col-span-2">
+                <div className="h-32 w-full lg:h-40 overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group" style={{animationDelay: '0.3s'}}>
                   <img
                     alt="Hospitality staff"
-                    src={Banner3}
+                    src={Image4}
                     className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
                     loading="lazy"
                     decoding="async"
                   />
-                  {/* <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div> */}
+                </div>
+              </div>
+              
+              {/* Third row */}
+              <div className="col-span-1">
+                <div className="h-32 w-full lg:h-40 overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group" style={{animationDelay: '0.4s'}}>
+                  <img
+                    alt="Engineering professionals"
+                    src={Image5}
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+              <div className="col-span-1">
+                <div className="h-32 w-full lg:h-40 overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group" style={{animationDelay: '0.5s'}}>
+                  <img
+                    alt="Facility management"
+                    src={Image6}
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+              <div className="col-span-1">
+                <div className="h-32 w-full lg:h-40 overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group" style={{animationDelay: '0.6s'}}>
+                  <img
+                    alt="Food service professionals"
+                    src={Image7}
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+              
+              {/* Fourth row */}
+              <div className="col-span-2">
+                <div className="h-32 w-full lg:h-40 overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group" style={{animationDelay: '0.7s'}}>
+                  <img
+                    alt="Aviation professionals"
+                    src={Image8}
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+              <div className="col-span-1">
+                <div className="h-32 w-full lg:h-40 overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group" style={{animationDelay: '0.8s'}}>
+                  <img
+                    alt="IT professionals"
+                    src={Image9}
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
               </div>
             </div>
@@ -83,7 +139,7 @@ const Hero = ()=> {
         </div>
 
         {/* Left side - Content */}
-        <div className="lg:w-1/2 text-center lg:text-left">
+        <div className="lg:w-1/2 text-center lg:text-left sm:pr-10">
           <div className="max-w-2xl">
             {/* Trust Badge */}
             <div className="badge badge-primary badge-lg mb-4 animate-bounce">
@@ -117,7 +173,7 @@ const Hero = ()=> {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <button 
-                className="btn btn-primary btn-lg min-h-[48px] touch-manipulation"
+                className="btn btn-primary btn-md min-h-[48px] touch-manipulation"
                 aria-label="Find skilled workers for your business"
               >
                 <span className="flex items-center">
@@ -128,7 +184,7 @@ const Hero = ()=> {
                 </span>
               </button>
               <button 
-                className="btn btn-outline btn-lg min-h-[48px] touch-manipulation"
+                className="btn btn-outline btn-md min-h-[48px] touch-manipulation"
                 aria-label="Find job opportunities with our clients"
               >
                 <span className="flex items-center">
