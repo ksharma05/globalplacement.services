@@ -68,7 +68,7 @@ const Hero = ()=> {
                 <div className="h-32 w-full lg:h-40 overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group" style={{animationDelay: '0.3s'}}>
                   <img
                     alt="Hospitality staff"
-                    src={Image4}
+                    src={Image8}
                     className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
                     loading="lazy"
                     decoding="async"
@@ -116,7 +116,7 @@ const Hero = ()=> {
                 <div className="h-32 w-full lg:h-40 overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group" style={{animationDelay: '0.7s'}}>
                   <img
                     alt="Aviation professionals"
-                    src={Image8}
+                    src={Image4}
                     className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
                     loading="lazy"
                     decoding="async"
