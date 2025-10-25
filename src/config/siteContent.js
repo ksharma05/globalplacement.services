@@ -60,6 +60,22 @@ export const siteContent = {
     activeWorkers: "4,750+"
   },
 
+  // Our Clients
+  clients: {
+    title: "Our Trusted Clients",
+    subtitle: "Partnering with industry leaders worldwide",
+    list: [
+      { name: "Nakheel Company UAE", logo: "Nakheel_Properties_logo.svg.png" },
+      { name: "Bechtel", logo: "Bechtel_logo_2023.svg.png" },
+      { name: "Daewoo", logo: "Logo_Daewoo_Motors_(2002-2016).svg.png" },
+      { name: "Hyundai", logo: "Hyundai_Motorsport.png" },
+      { name: "Enka", logo: "ENKA_Spor_Kulübü.png" },
+      { name: "Israel", logo: "IsraelCorp.svg.png" },
+      { name: "Archirodon", logo: "Archirodon_Logo.png" },
+      { name: "Gusan", logo: "m_img_ci-removebg-preview.webp" }
+    ]
+  },
+
   // Hero Section Content
   hero: {
     trustBadge: "⭐ Trusted by 500+ Companies",
@@ -138,52 +154,74 @@ export const siteContent = {
   // Industry Verticals
   verticals: [
     {
+      icon: "🏗️",
+      title: "Civil Trades",
+      description: "Comprehensive civil construction and maintenance professionals",
+      workers: "1500+",
+      trades: ["Mason", "Carpenter", "Steel Fixture", "Scaffolder", "Painter", "Cleaner", "Security Guard", "General Helpers"]
+    },
+    {
+      icon: "🔧",
+      title: "Mechanical Trades",
+      description: "Expert mechanical and technical professionals for all industries",
+      workers: "1800+",
+      trades: ["Engineers", "Mechanics", "Foreman", "Plumber", "Electrician", "A/C Technician", "Drivers/Operators", "Automechanic", "Surveyors", "Safety Staff"]
+    },
+    {
+      icon: "🏥",
+      title: "Health Department",
+      description: "Qualified healthcare professionals for medical facilities",
+      workers: "600+",
+      trades: ["Doctors", "Nurses (Male & Female)"]
+    },
+    {
       icon: "⚙️",
       title: "Engineering / Oil & Gas",
       description: "Skilled engineers, technicians, and field workers for energy projects",
-      workers: "500+"
+      workers: "500+",
+      trades: ["Petroleum Engineers", "Drilling Engineers", "Pipeline Engineers", "Field Technicians", "Rig Operators", "Safety Engineers", "Project Managers", "Quality Control Inspectors"]
     },
     {
       icon: "🏨",
       title: "Hospitality",
       description: "Front desk, housekeeping, food service, and guest relations staff",
-      workers: "800+"
+      workers: "800+",
+      trades: ["Front Desk Receptionist", "Housekeeping Staff", "Room Attendants", "Concierge", "Bellhops", "Guest Relations Officers", "Reservation Agents", "Maintenance Staff"]
     },
     {
       icon: "💻",
       title: "Information Technology",
       description: "Technical support, data entry, and IT infrastructure specialists",
-      workers: "300+"
+      workers: "300+",
+      trades: ["IT Support Technicians", "Data Entry Operators", "Network Administrators", "System Administrators", "Help Desk Support", "Database Operators", "IT Coordinators"]
     },
     {
       icon: "🏭",
       title: "Manufacturing",
       description: "Production workers, machine operators, and quality control specialists",
-      workers: "1200+"
-    },
-    {
-      icon: "🏥",
-      title: "Healthcare",
-      description: "Nursing assistants, medical technicians, and healthcare support staff",
-      workers: "600+"
+      workers: "1200+",
+      trades: ["Machine Operators", "Production Workers", "Assembly Line Workers", "Quality Control Inspectors", "Forklift Operators", "Warehouse Staff", "Packaging Staff", "Maintenance Technicians"]
     },
     {
       icon: "🏢",
       title: "Facility Management",
       description: "Maintenance technicians, janitorial staff, and security personnel",
-      workers: "400+"
+      workers: "400+",
+      trades: ["Facility Managers", "Maintenance Technicians", "HVAC Technicians", "Janitorial Staff", "Security Guards", "Groundskeepers", "Building Engineers", "Custodians"]
     },
     {
       icon: "🍽️",
       title: "Food & Beverage Catering",
       description: "Chefs, servers, kitchen staff, and catering professionals",
-      workers: "700+"
+      workers: "700+",
+      trades: ["Chefs", "Sous Chefs", "Line Cooks", "Kitchen Helpers", "Servers", "Waiters", "Bartenders", "Catering Staff", "Food Prep Workers", "Dishwashers"]
     },
     {
       icon: "✈️",
       title: "Aviation, MRO, Aerospace & Defence",
       description: "Aircraft technicians, maintenance crews, and specialized engineers",
-      workers: "250+"
+      workers: "250+",
+      trades: ["Aircraft Technicians", "Avionics Technicians", "Maintenance Engineers", "Ground Crew", "Quality Inspectors", "Safety Officers", "Aerospace Engineers", "MRO Specialists"]
     }
   ],
 
@@ -225,18 +263,38 @@ export const siteContent = {
   process: [
     {
       step: 1,
-      title: "Tell Us Your Needs",
-      description: "Share your requirements, timeline, and specific skills needed."
+      title: "Receive Requirements",
+      description: "Receive demands, Power of attorney, and salary structure from the clients."
     },
     {
       step: 2,
-      title: "We Find Perfect Matches",
-      description: "Our team screens and matches qualified candidates to your criteria."
+      title: "Evaluate Vacancies",
+      description: "Evaluate the vacancies as per guidelines."
     },
     {
       step: 3,
-      title: "Start Working Together",
-      description: "Onboard your new team members and begin productive collaboration."
+      title: "Shortlist Candidates",
+      description: "Shortlisting adequate candidates."
+    },
+    {
+      step: 4,
+      title: "Schedule Interviews",
+      description: "Fixing date of interviews with the client and call the candidates."
+    },
+    {
+      step: 5,
+      title: "Prepare Documentation",
+      description: "Prepare essential documents of the selected candidates for visa processing."
+    },
+    {
+      step: 6,
+      title: "Skill Upgradation",
+      description: "Skill upgradation before dispatch the candidates."
+    },
+    {
+      step: 7,
+      title: "Ticketing & Immigration",
+      description: "Ticketing and immigration."
     }
   ],
 
@@ -245,20 +303,57 @@ export const siteContent = {
     {
       initials: "SS",
       name: "Er. Surendra Singh Shekhawat (Civil Engineering)",
-      position: "Owner & MD",
+      position: "Owner & Chairman",
       description: `15+ years in staffing industry.
       Isolux(company) -> Projects : Highway and Railway Bridges
-      L&T(company) -> Projects : Bullet Train`
+      L&T(company) -> Projects : Bullet Train`,
+      photo: "Surendra.jpeg"
     },
     {
       initials: "BS",
       name: "Er. Bhopal Singh Shekhawat (Mechanical Engineering)",
-      position: "General Manager",
+      position: "Director",
       description: `Retired from HMT(company) after 26 years of service.
       Manpower consulatant with 15 years of experience with 
-      reputed company of manpower placement`
+      reputed company of manpower placement`,
+      photo: "Bopal.jpg"
     },
   ],
+
+  // Our Experience
+  experience: {
+    title: "Our Experience",
+    icon: "📊",
+    mainContent: "With extensive experience in the specialized field of recruitment since 2000, we began our journey as part of a renowned recruitment agency based in New Delhi. Over the years, we have successfully placed thousands of candidates in multinational companies across the globe.",
+    highlights: [
+      {
+        icon: "📅",
+        title: "Since 2000",
+        description: "Over two decades of recruitment excellence"
+      },
+      {
+        icon: "🏢",
+        title: "New Delhi Origins",
+        description: "Started with a renowned recruitment agency"
+      },
+      {
+        icon: "🌍",
+        title: "Global Reach",
+        description: "Placements in multinational companies worldwide"
+      },
+      {
+        icon: "👥",
+        title: "Thousands Placed",
+        description: "Successfully matched candidates with opportunities"
+      }
+    ],
+    stats: {
+      yearsActive: "24+",
+      globalPlacements: "10,000+",
+      countries: "25+",
+      industries: "15+"
+    }
+  },
 
   // Company Values
   values: {
@@ -448,6 +543,43 @@ export const siteContent = {
       "Customized staffing strategy",
       "No obligation to proceed",
       "Expert industry insights"
+    ]
+  },
+
+  // Training and Trade Centre Facilities
+  facilities: {
+    title: "Training and Trade Centre",
+    description: "Our state-of-the-art facility is equipped with comprehensive testing and training capabilities to ensure candidates are job-ready and meet industry standards.",
+    mainFeatures: [
+      {
+        icon: "🏢",
+        title: "Spacious Trade Center",
+        description: "Our office features a spacious trade center equipped with modern facilities and equipment for comprehensive skills assessment and development."
+      },
+      {
+        icon: "🔧",
+        title: "Testing Facilities",
+        description: "Fully equipped testing facilities for civil trades, electrical work, and plumbing to ensure candidates meet industry standards and client requirements.",
+        trades: ["Civil Trades", "Electrical Work", "Plumbing"]
+      },
+      {
+        icon: "👨‍🏫",
+        title: "Expert Training Team",
+        description: "A dedicated team of industry experts is available to provide comprehensive training to interested candidates, ensuring they are fully prepared for their roles."
+      },
+      {
+        icon: "🛋️",
+        title: "Client Retiring Room",
+        description: "Comfortable retiring room facility available for clients to take breaks during interviews and assessments, ensuring a pleasant experience."
+      }
+    ],
+    highlights: [
+      "Modern testing equipment",
+      "Certified trainers",
+      "Hands-on training programs",
+      "Comfortable client amenities",
+      "Industry-standard facilities",
+      "Skills certification"
     ]
   },
 

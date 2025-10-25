@@ -4,14 +4,12 @@ import useContent from '../hooks/useContent';
 /**
  * Consultation Modal Component
  * 
- * Displays a modal with 3-step consultation process
- * - Step 1: Call Now (triggers phone call)
- * - Step 2: Schedule Meeting (opens calendar/scheduling)
- * - Step 3: Start Consultation (contact form or booking)
+ * Displays a modal with our 7-step selection process
+ * Shows the complete workflow from client requirements to candidate dispatch
  */
 
 const ConsultationModal = ({ isOpen, onClose }) => {
-  const { consultation, getContactInfo } = useContent();
+  const { process, getContactInfo } = useContent();
   const { phoneHref } = getContactInfo();
 
   if (!isOpen) return null;
@@ -42,7 +40,7 @@ const ConsultationModal = ({ isOpen, onClose }) => {
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
           <h3 className="text-2xl font-bold text-base-content">
-            {consultation.title}
+            Our Selection Process
           </h3>
           <button
             onClick={onClose}
@@ -57,58 +55,50 @@ const ConsultationModal = ({ isOpen, onClose }) => {
 
         {/* Description */}
         <p className="text-base-content/80 text-lg mb-8 text-center">
-          {consultation.description}
+          Follow our comprehensive 7-step process from initial requirements to candidate dispatch
         </p>
 
         {/* Steps */}
-        <div className="space-y-6">
-          {consultation.steps.map((step, index) => (
-            <div key={index} className="card bg-base-100 border border-base-300">
-              <div className="card-body">
-                <div className="flex items-start gap-4">
+        <div className="space-y-4">
+          {process.map((step, index) => (
+            <div key={index} className="card bg-base-100 border border-base-300 shadow-sm hover:shadow-md transition-shadow duration-200">
+              <div className="card-body p-6">
+                <div className="flex items-start gap-6">
                   {/* Step Number & Icon */}
-                  <div className="flex flex-col items-center">
-                    <div className="w-12 h-12 bg-primary text-primary-content rounded-full flex items-center justify-center text-xl font-bold mb-2">
+                  <div className="flex flex-col items-center flex-shrink-0">
+                    <div className="w-14 h-14 bg-primary text-primary-content rounded-full flex items-center justify-center text-xl font-bold shadow-lg">
                       {step.step}
                     </div>
-                    <div className="text-3xl">{step.icon}</div>
+                    {/* <div className="text-3xl mt-2 opacity-80">
+                      {step.step === 1 && "📋"}
+                      {step.step === 2 && "🔍"}
+                      {step.step === 3 && "👥"}
+                      {step.step === 4 && "📅"}
+                      {step.step === 5 && "📄"}
+                      {step.step === 6 && "🎓"}
+                      {step.step === 7 && "✈️"}
+                    </div> */}
                   </div>
 
                   {/* Content */}
-                  <div className="flex-1">
-                    <h4 className="text-xl font-bold text-base-content mb-2">
+                  <div className="flex-1 min-w-0">
+                    <h4 className="text-xl font-bold text-base-content mb-3 leading-tight">
                       {step.title}
                     </h4>
-                    <p className="text-base-content/80 mb-4">
+                    <p className="text-base-content/80 text-base leading-relaxed mb-4">
                       {step.description}
                     </p>
-                    <button
-                      onClick={() => handleStepAction(step.actionType)}
-                      className={`btn ${
-                        step.actionType === 'call' 
-                          ? 'btn-primary' 
-                          : step.actionType === 'schedule'
-                          ? 'btn-secondary'
-                          : 'btn-accent'
-                      }`}
-                    >
-                      {step.action}
-                      {step.actionType === 'call' && (
+                    {step.step === 1 && (
+                      <button
+                        onClick={() => window.location.href = phoneHref}
+                        className="btn btn-primary btn-sm"
+                      >
+                        Get Started
                         <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                         </svg>
-                      )}
-                      {step.actionType === 'schedule' && (
-                        <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                      )}
-                      {step.actionType === 'consult' && (
-                        <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                        </svg>
-                      )}
-                    </button>
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
@@ -119,17 +109,33 @@ const ConsultationModal = ({ isOpen, onClose }) => {
         {/* Benefits */}
         <div className="mt-8 p-6 bg-base-200 rounded-lg">
           <h4 className="text-lg font-bold text-base-content mb-4 text-center">
-            What You Get:
+            Why Choose Our Process:
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {consultation.benefits.map((benefit, index) => (
-              <div key={index} className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="text-sm text-base-content/80">{benefit}</span>
-              </div>
-            ))}
+            <div className="flex items-center gap-2">
+              <svg className="w-5 h-5 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              <span className="text-sm text-base-content/80">Comprehensive documentation handling</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <svg className="w-5 h-5 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              <span className="text-sm text-base-content/80">Professional skill upgradation</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <svg className="w-5 h-5 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              <span className="text-sm text-base-content/80">Complete visa processing support</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <svg className="w-5 h-5 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              <span className="text-sm text-base-content/80">End-to-end immigration assistance</span>
+            </div>
           </div>
         </div>
 

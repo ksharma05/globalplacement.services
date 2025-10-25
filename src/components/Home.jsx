@@ -17,7 +17,7 @@ const Testimonial = lazy(() => import('./Testimonial'));
 
 const Home = () => {
   const imageUrls = useSelector(state => state.slides.imageUrls);
-  const { services, whyChooseUs, process, ctas, getContactInfo } = useContent();
+  const { services, whyChooseUs, process, ctas, facilities, getContactInfo } = useContent();
   const [showConsultationModal, setShowConsultationModal] = useState(false);
   const { phoneHref } = getContactInfo();
 
@@ -81,6 +81,41 @@ const Home = () => {
                   <p className="text-sm font-medium text-base-content">{service.title}</p>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* Facilities Highlight */}
+          <div className="mt-16">
+            <div className="card bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/10 shadow-xl border border-primary/20">
+              <div className="card-body p-8">
+                <div className="flex flex-col md:flex-row items-center gap-8">
+                  <div className="text-6xl md:text-7xl">🏢</div>
+                  <div className="flex-1 text-center md:text-left">
+                    <h3 className="text-3xl font-bold mb-4 text-base-content">{facilities.title}</h3>
+                    <p className="text-lg text-base-content/80 mb-6 leading-relaxed">
+                      {facilities.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2 justify-center md:justify-start">
+                      {facilities.mainFeatures.slice(0, 3).map((feature, index) => (
+                        <span key={index} className="badge badge-primary badge-lg gap-2">
+                          {feature.icon} {feature.title}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <a 
+                      href="/about" 
+                      className="btn btn-primary btn-lg"
+                    >
+                      Learn More
+                      <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -161,7 +196,7 @@ const Home = () => {
 
           {/* Process Overview */}
           <div className="mt-16 bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/10 rounded-2xl p-8 border border-primary/20">
-            <h3 className="text-2xl font-bold text-center mb-8 gradient-text">Our Simple 3-Step Process</h3>
+            <h3 className="text-2xl font-bold text-center mb-8 gradient-text">Our Simple 7-Step Process</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {process.map((step, index) => (
                 <div key={index} className="text-center group">

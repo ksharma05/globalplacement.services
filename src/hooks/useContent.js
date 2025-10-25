@@ -18,7 +18,10 @@ import {
   selectFaqs,
   selectCtas,
   selectPolicies,
-  selectConsultation
+  selectConsultation,
+  selectFacilities,
+  selectExperience,
+  selectClients
 } from '../features/content/contentSlice';
 
 /**
@@ -50,6 +53,9 @@ export const useContent = () => {
   const ctas = useSelector(selectCtas);
   const policies = useSelector(selectPolicies);
   const consultation = useSelector(selectConsultation);
+  const facilities = useSelector(selectFacilities);
+  const experienceData = useSelector(selectExperience);
+  const clients = useSelector(selectClients);
 
   // Utility functions for common content access patterns
   const getContactInfo = () => ({
@@ -96,6 +102,9 @@ export const useContent = () => {
     ctas,
     policies,
     consultation,
+    facilities,
+    experienceData,
+    clients,
     
     // Utility functions
     getContactInfo,

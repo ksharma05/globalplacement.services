@@ -1,10 +1,21 @@
 import React from 'react';
 import useContent from '../hooks/useContent';
+import Facilities from './Facilities';
+
+// Import team member photos
+import SurendraPhoto from '../assets/Surendra.jpeg';
+import BopalPhoto from '../assets/Bopal.jpg';
 
 const About = () => {
-  const { getCompanyInfo, getStats, values, timeline, team, achievements } = useContent();
+  const { getCompanyInfo, getStats, values, timeline, team, achievements, experienceData } = useContent();
   const { name, description } = getCompanyInfo();
   const { experience, clients, placements } = getStats();
+
+  // Create a mapping of photo filenames to imported assets
+  const photoMap = {
+    'Surendra.jpeg': SurendraPhoto,
+    'Bopal.jpg': BopalPhoto
+  };
   return (
     <div className="min-h-screen bg-base-100">
       {/* Hero Section */}
@@ -74,8 +85,60 @@ const About = () => {
         </div>
       </section>
 
-      {/* Values Section */}
+      {/* Our Experience Section */}
       <section className="w-full bg-base-200 py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="text-6xl mb-4">{experienceData.icon}</div>
+              <h2 className="text-4xl font-bold mb-6 text-base-content">{experienceData.title}</h2>
+              <p className="text-xl text-base-content/80 leading-relaxed max-w-4xl mx-auto">
+                {experienceData.mainContent}
+              </p>
+            </div>
+
+            {/* Highlights Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+              {experienceData.highlights.map((highlight, index) => (
+                <div key={index} className="card bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                  <div className="card-body text-center p-6">
+                    <div className="text-4xl mb-3">{highlight.icon}</div>
+                    <h3 className="font-bold text-lg text-primary mb-2">{highlight.title}</h3>
+                    <p className="text-sm text-base-content/70">{highlight.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Stats Showcase */}
+            <div className="card bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/10 shadow-xl border border-primary/20">
+              <div className="card-body p-8">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                  <div>
+                    <div className="text-4xl font-bold text-primary mb-2">{experienceData.stats.yearsActive}</div>
+                    <p className="text-base-content/80 font-medium">Years Active</p>
+                  </div>
+                  <div>
+                    <div className="text-4xl font-bold text-secondary mb-2">{experienceData.stats.globalPlacements}</div>
+                    <p className="text-base-content/80 font-medium">Global Placements</p>
+                  </div>
+                  <div>
+                    <div className="text-4xl font-bold text-accent mb-2">{experienceData.stats.countries}</div>
+                    <p className="text-base-content/80 font-medium">Countries Served</p>
+                  </div>
+                  <div>
+                    <div className="text-4xl font-bold text-success mb-2">{experienceData.stats.industries}</div>
+                    <p className="text-base-content/80 font-medium">Industries Covered</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Values Section */}
+      <section className="w-full bg-base-100 py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6 text-base-content">Our Core Values</h2>
@@ -149,8 +212,18 @@ const About = () => {
               <div key={index} className="card bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
                 <div className="card-body text-center p-6">
                   <div className="avatar mb-4">
-                    <div className={`w-24 h-24 rounded-full ${index === 0 ? 'bg-primary text-primary-content' : index === 1 ? 'bg-secondary text-secondary-content' : 'bg-accent text-accent-content'} flex items-center justify-center text-2xl font-bold group-hover:scale-110 transition-transform duration-300`}>
-                      {member.initials}
+                    <div className="w-24 h-24 rounded-full overflow-hidden group-hover:scale-110 transition-transform duration-300">
+                      {member.photo && photoMap[member.photo] ? (
+                        <img
+                          src={photoMap[member.photo]}
+                          alt={member.name}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className={`w-full h-full ${index === 0 ? 'bg-primary text-primary-content' : index === 1 ? 'bg-secondary text-secondary-content' : 'bg-accent text-accent-content'} flex items-center justify-center text-2xl font-bold`}>
+                          {member.initials}
+                        </div>
+                      )}
                     </div>
                   </div>
                   <h3 className="card-title justify-center text-primary text-xl mb-2 group-hover:text-secondary transition-colors duration-300">{member.name}</h3>
@@ -165,8 +238,15 @@ const About = () => {
         </div>
       </section>
 
-      {/* Achievements & Certifications */}
+      {/* Training and Trade Centre Facilities */}
       <section className="w-full bg-base-100 py-16">
+        <div className="container mx-auto px-4">
+          <Facilities />
+        </div>
+      </section>
+
+      {/* Achievements & Certifications */}
+      <section className="w-full bg-base-200 py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6 text-base-content">Our Achievements</h2>

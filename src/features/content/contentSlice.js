@@ -63,5 +63,8 @@ export const selectFaqs = (state) => state.content.data.faqs;
 export const selectCtas = (state) => state.content.data.ctas;
 export const selectPolicies = (state) => state.content.data.policies;
 export const selectConsultation = (state) => state.content.data.consultation;
+export const selectFacilities = (state) => state.content.data.facilities;
+export const selectExperience = (state) => state.content.data.experience;
+export const selectClients = (state) => state.content.data.clients;
 
 export default contentSlice.reducer;
