@@ -2,20 +2,55 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.jpeg';
 import useContent from '../hooks/useContent';
+import { GOOGLE_SCRIPT_URL } from '../config/googleSheets';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const [error, setError] = useState('');
   const { getCompanyInfo, getContactInfo, social } = useContent();
   const { name, description } = getCompanyInfo();
   const { phone, email: contactEmail } = getContactInfo();
 
-  const handleNewsletterSubmit = (e) => {
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const handleNewsletterSubmit = async (e) => {
     e.preventDefault();
-    // Simulate newsletter subscription
-    setIsSubscribed(true);
-    setEmail('');
-    setTimeout(() => setIsSubscribed(false), 3000);
+    setError('');
+    
+    if (!email.trim()) {
+      setError('Email is required');
+      return;
+    }
+    
+    if (!validateEmail(email)) {
+      setError('Please enter a valid email address');
+      return;
+    }
+
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          action: 'submit-newsletter',
+          email,
+          source: 'footer'
+        })
+      });
+      
+      setIsSubscribed(true);
+      setEmail('');
+      setTimeout(() => setIsSubscribed(false), 3000);
+    } catch (err) {
+      setError('Failed to subscribe. Please try again.');
+    }
   };
 
   return (
@@ -152,6 +187,16 @@ const Footer = () => {
               <p className="text-sm text-base-content/80 mb-3">
                 Get the latest staffing insights and job opportunities.
               </p>
+              
+              {error && (
+                <div className="alert alert-error alert-sm mb-3">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span className="text-xs">{error}</span>
+                </div>
+              )}
+              
               <form onSubmit={handleNewsletterSubmit} className="space-y-2">
                 <div className="form-control">
                   <input

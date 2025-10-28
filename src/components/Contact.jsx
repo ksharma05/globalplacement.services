@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import useContent from '../hooks/useContent';
 import ConsultationModal from './ConsultationModal';
+import { GOOGLE_SCRIPT_URL } from '../config/googleSheets';
 
 const Contact = () => {
   const { contact, faqs, getContactInfo } = useContent();
@@ -15,6 +16,9 @@ const Contact = () => {
   });
 
   const [formStatus, setFormStatus] = useState('idle'); // idle, submitting, success, error
+  const [verificationStep, setVerificationStep] = useState('initial'); // initial, code-sent, verifying
+  const [verificationCode, setVerificationCode] = useState('');
+  const [error, setError] = useState('');
   const [showConsultationModal, setShowConsultationModal] = useState(false);
   const { phoneHref } = getContactInfo();
 
@@ -33,13 +37,100 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  // Validation functions
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validatePhone = (phone) => {
+    if (!phone) return true; // Phone is optional
+    const phoneRegex = /^[+]?[\d\s\-\(\)]{10,}$/;
+    return phoneRegex.test(phone);
+  };
+
+  const validateForm = () => {
+    if (!formData.name.trim()) {
+      setError('Name is required');
+      return false;
+    }
+    if (!formData.email.trim()) {
+      setError('Email is required');
+      return false;
+    }
+    if (!validateEmail(formData.email)) {
+      setError('Please enter a valid email address');
+      return false;
+    }
+    if (!validatePhone(formData.phone)) {
+      setError('Please enter a valid phone number');
+      return false;
+    }
+    if (!formData.message.trim()) {
+      setError('Message is required');
+      return false;
+    }
+    return true;
+  };
+
+  const handleSendVerification = async (e) => {
     e.preventDefault();
+    setError('');
+    
+    if (!validateForm()) {
+      return;
+    }
+
     setFormStatus('submitting');
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: JSON.stringify({
+          action: 'send-verification',
+          ...formData
+        })
+      });
+      
+      // Assume success since we can't read response with no-cors
+      // If email was sent, proceed to next step
+      setVerificationStep('code-sent');
+      setFormStatus('idle');
+    } catch (err) {
+      setError('Failed to send verification code. Please try again.');
+      setFormStatus('idle');
+    }
+  };
+
+  const handleVerifyAndSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    
+    if (!verificationCode.trim()) {
+      setError('Please enter the verification code');
+      return;
+    }
+
+    setFormStatus('submitting');
+    console.log(formData);
+    try {
+      // Use fetch with no-cors, similar to other submissions.
+      // The Apps Script needs to be deployed to handle this.
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: JSON.stringify({
+          action: 'verify-and-submit',
+          ...formData,
+          verificationCode
+        })
+      });
+      
+      // Assume success and reset form
       setFormStatus('success');
+      setVerificationStep('initial');
+      setVerificationCode('');
       setFormData({
         name: '',
         email: '',
@@ -49,7 +140,31 @@ const Contact = () => {
         preferredContact: '',
         message: ''
       });
-    }, 2000);
+    } catch (err) {
+      setError('Failed to submit form. Please try again.');
+      setFormStatus('idle');
+    }
+  };
+
+  const handleResendCode = async () => {
+    setError('');
+    setFormStatus('submitting');
+    
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: JSON.stringify({
+          action: 'send-verification',
+          ...formData
+        })
+      });
+      
+      setFormStatus('idle');
+    } catch (err) {
+      setError('Failed to resend verification code');
+      setFormStatus('idle');
+    }
   };
 
   return (
@@ -206,7 +321,17 @@ const Contact = () => {
                     </div>
                   )}
 
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  {error && verificationStep === 'initial' && (
+                    <div className="alert alert-error mb-6">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <span>{error}</span>
+                    </div>
+                  )}
+
+                  {verificationStep === 'initial' && (
+                  <form onSubmit={handleSendVerification} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="form-control">
                         <label className="label" htmlFor="name">
@@ -331,9 +456,63 @@ const Contact = () => {
                       }`}
                       disabled={formStatus === 'submitting'}
                     >
-                      {formStatus === 'submitting' ? 'Sending...' : 'Send Message'}
+                      {formStatus === 'submitting' ? 'Sending Verification Code...' : 'Send Verification Code'}
                     </button>
                   </form>
+                  )}
+
+                  {verificationStep === 'code-sent' && (
+                    <div className="space-y-6">
+                      <div className="alert alert-info">
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <div>
+                          <h3 className="font-bold">Verification Code Sent!</h3>
+                          <div className="text-xs">We've sent a 6-digit verification code to <strong>{formData.email}</strong></div>
+                          <div className="text-xs mt-1">Please check your email and enter the code below.</div>
+                        </div>
+                      </div>
+
+                      <form onSubmit={handleVerifyAndSubmit} className="space-y-6">
+                        <div className="form-control">
+                          <label className="label" htmlFor="verificationCode">
+                            <span className="label-text font-medium">Verification Code *</span>
+                          </label>
+                          <input
+                            type="text"
+                            id="verificationCode"
+                            value={verificationCode}
+                            onChange={(e) => setVerificationCode(e.target.value)}
+                            className="input input-bordered w-full text-center text-2xl tracking-widest"
+                            placeholder="000000"
+                            maxLength="6"
+                            required
+                          />
+                        </div>
+
+                        <div className="flex gap-4">
+                          <button
+                            type="submit"
+                            className={`btn btn-primary btn-lg flex-1 ${
+                              formStatus === 'submitting' ? 'loading' : ''
+                            }`}
+                            disabled={formStatus === 'submitting'}
+                          >
+                            {formStatus === 'submitting' ? 'Verifying...' : 'Verify & Submit'}
+                          </button>
+                          <button
+                            type="button"
+                            onClick={handleResendCode}
+                            className="btn btn-outline btn-lg"
+                            disabled={formStatus === 'submitting'}
+                          >
+                            Resend Code
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  )}
                 </div>
               </div>
 
