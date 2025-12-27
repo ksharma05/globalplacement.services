@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/logo.jpeg';
 import useContent from '../hooks/useContent';
 import { GOOGLE_SCRIPT_URL } from '../config/googleSheets';
+import RegistrationCertificate from '../assets/Registration Certificate.pdf';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
@@ -289,6 +290,19 @@ const Footer = () => {
                 <div className="badge badge-accent badge-sm">✓</div>
                 <span className="text-sm text-base-content/80">24/7 Support</span>
               </div>
+              <a
+                href={RegistrationCertificate}
+                download="Registration_Certificate.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-base-content/80 hover:text-primary transition-colors duration-200"
+                aria-label="Download Registration Certificate"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span>Govt. Registration</span>
+              </a>
             </div>
             <div className="text-sm text-base-content/70">
               <p>Response time: Within 2 hours | 99.9% Client Satisfaction</p>
@@ -333,6 +347,16 @@ const Footer = () => {
               >
                 Accessibility
               </Link>
+              <a
+                href={RegistrationCertificate}
+                download="Registration_Certificate.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-base-content/70 hover:text-primary transition-colors duration-200"
+                aria-label="Download Registration Certificate"
+              >
+                Registration Certificate
+              </a>
             </div>
           </div>
         </div>

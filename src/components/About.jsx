@@ -6,6 +6,9 @@ import Facilities from './Facilities';
 import SurendraPhoto from '../assets/Surendra.jpeg';
 import BopalPhoto from '../assets/Bopal.jpg';
 
+// Import Registration Certificate
+import RegistrationCertificate from '../assets/Registration Certificate.pdf';
+
 const About = () => {
   const { getCompanyInfo, getStats, values, timeline, team, achievements, experienceData } = useContent();
   const { name, description } = getCompanyInfo();
@@ -263,6 +266,96 @@ const About = () => {
                 <p className="text-sm text-base-content/70">{achievement.description}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Government Registration Certificate Section */}
+      <section className="w-full bg-base-100 py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold mb-6 text-base-content">Government Registration</h2>
+              <p className="text-xl text-base-content/80 max-w-3xl mx-auto">
+                We are a registered and authorized recruitment agency under the Emigration Act, 1983 of the Government of India.
+              </p>
+            </div>
+
+            <div className="card bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/10 shadow-xl border-2 border-primary/30">
+              <div className="card-body p-8">
+                <div className="flex flex-col md:flex-row items-center gap-8">
+                  {/* Certificate Icon/Preview */}
+                  <div className="flex-shrink-0">
+                    <div className="w-32 h-32 bg-primary/20 rounded-xl flex items-center justify-center">
+                      <svg className="w-16 h-16 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  {/* Certificate Details */}
+                  <div className="flex-1 text-center md:text-left">
+                    <h3 className="text-2xl font-bold text-primary mb-4">Registration Certificate</h3>
+                    <div className="space-y-2 mb-6">
+                      <div className="flex flex-col md:flex-row md:items-center gap-2">
+                        <span className="font-semibold text-base-content">Certificate Number:</span>
+                        <span className="text-base-content/80">B-3188/RAJ/PER/100/5/11188/2025</span>
+                      </div>
+                      <div className="flex flex-col md:flex-row md:items-center gap-2">
+                        <span className="font-semibold text-base-content">Issued Under:</span>
+                        <span className="text-base-content/80">Section 11 of Emigration Act, 1983</span>
+                      </div>
+                      <div className="flex flex-col md:flex-row md:items-center gap-2">
+                        <span className="font-semibold text-base-content">Valid Until:</span>
+                        <span className="text-base-content/80">June 28, 2030</span>
+                      </div>
+                      <div className="flex flex-col md:flex-row md:items-center gap-2">
+                        <span className="font-semibold text-base-content">Issuing Authority:</span>
+                        <span className="text-base-content/80">Ministry of External Affairs, Government of India</span>
+                      </div>
+                    </div>
+                    
+                    {/* Download Button */}
+                    <a
+                      href={RegistrationCertificate}
+                      download="Registration_Certificate.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-primary btn-lg w-full md:w-auto"
+                    >
+                      <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      Download Certificate
+                    </a>
+                  </div>
+                </div>
+
+                {/* Trust Badge */}
+                <div className="mt-6 pt-6 border-t border-primary/20">
+                  <div className="flex flex-wrap items-center justify-center gap-4 text-sm">
+                    <div className="badge badge-primary badge-lg gap-2">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      Government Authorized
+                    </div>
+                    <div className="badge badge-secondary badge-lg gap-2">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                      </svg>
+                      Legally Compliant
+                    </div>
+                    <div className="badge badge-accent badge-lg gap-2">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      Valid Until 2030
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
