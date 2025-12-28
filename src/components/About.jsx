@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useContent from '../hooks/useContent';
 import Facilities from './Facilities';
 
@@ -8,11 +8,13 @@ import BopalPhoto from '../assets/Bopal.jpg';
 
 // Import Registration Certificate
 import RegistrationCertificate from '../assets/Registration Certificate.pdf';
+import RegistrationCertificateImg from '../assets/Registration Certificate_img.pdf';
 
 const About = () => {
   const { getCompanyInfo, getStats, values, timeline, team, achievements, experienceData } = useContent();
   const { name, description } = getCompanyInfo();
   const { experience, clients, placements } = getStats();
+  const [showCertificateModal, setShowCertificateModal] = useState(false);
 
   // Create a mapping of photo filenames to imported assets
   const photoMap = {
@@ -284,13 +286,38 @@ const About = () => {
             <div className="card bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/10 shadow-xl border-2 border-primary/30">
               <div className="card-body p-8">
                 <div className="flex flex-col md:flex-row items-center gap-8">
-                  {/* Certificate Icon/Preview */}
+                  {/* Certificate Preview */}
                   <div className="flex-shrink-0">
-                    <div className="w-32 h-32 bg-primary/20 rounded-xl flex items-center justify-center">
-                      <svg className="w-16 h-16 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                      </svg>
-                    </div>
+                    <button
+                      onClick={() => setShowCertificateModal(true)}
+                      className="group relative w-56 h-72 bg-base-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-primary/30 hover:border-primary cursor-pointer"
+                      aria-label="View Registration Certificate"
+                    >
+                      <object
+                        data={RegistrationCertificateImg + '#toolbar=0&navpanes=0&scrollbar=0&zoom=page-fit'}
+                        type="application/pdf"
+                        className="w-full h-full pointer-events-none"
+                        aria-label="Registration Certificate Preview"
+                      >
+                        <div className="w-full h-full flex items-center justify-center bg-base-200">
+                          <div className="text-center">
+                            <svg className="w-16 h-16 text-primary mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            <p className="text-sm text-base-content/60">Certificate Preview</p>
+                          </div>
+                        </div>
+                      </object>
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
+                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-primary/90 text-primary-content px-4 py-2 rounded-lg flex items-center gap-2">
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                          </svg>
+                          <span className="font-medium">View Full Size</span>
+                        </div>
+                      </div>
+                    </button>
+                    <p className="text-xs text-center text-base-content/60 mt-2">Click to view full certificate</p>
                   </div>
 
                   {/* Certificate Details */}
@@ -393,6 +420,70 @@ const About = () => {
           </div>
         </div>
       </section>
+
+      {/* Certificate Fullscreen Modal */}
+      {showCertificateModal && (
+        <div className="modal modal-open">
+          <div className="modal-box max-w-7xl w-full h-[90vh] p-0">
+            <div className="flex justify-between items-center p-4 border-b border-base-300">
+              <h3 className="text-2xl font-bold text-base-content">Registration Certificate</h3>
+              <button
+                onClick={() => setShowCertificateModal(false)}
+                className="btn btn-sm btn-circle btn-ghost"
+                aria-label="Close certificate view"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div className="h-[calc(90vh-80px)] overflow-auto bg-base-200">
+              <object
+                data={RegistrationCertificateImg}
+                type="application/pdf"
+                className="w-full h-full min-h-[800px]"
+                aria-label="Registration Certificate Full View"
+              >
+                <div className="w-full h-full flex items-center justify-center p-8">
+                  <div className="text-center">
+                    <p className="text-lg text-base-content/80 mb-4">Unable to display PDF. Please download to view.</p>
+                    <a
+                      href={RegistrationCertificate}
+                      download="Registration_Certificate.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-primary"
+                    >
+                      Download Certificate
+                    </a>
+                  </div>
+                </div>
+              </object>
+            </div>
+            <div className="modal-action p-4 border-t border-base-300">
+              <a
+                href={RegistrationCertificate}
+                download="Registration_Certificate.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+              >
+                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Download PDF
+              </a>
+              <button
+                onClick={() => setShowCertificateModal(false)}
+                className="btn btn-ghost"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+          <div className="modal-backdrop" onClick={() => setShowCertificateModal(false)}></div>
+        </div>
+      )}
     </div>
   );
 };

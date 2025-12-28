@@ -129,6 +129,16 @@ export const siteContent = {
           "Process optimization",
           "Training programs"
         ]
+      },
+      {
+        icon: "🏥",
+        title: "Nursing Staff Employment",
+        description: "Employment of nursing staff in hospitals, clinics, and home care units across various specialized departments.",
+        features: [
+          "ICU, PICU, NICU, MICU specialists",
+          "Emergency & Medical Ward nurses",
+          "Home care & clinic placements"
+        ]
       }
     ],
     additional: [
@@ -170,9 +180,9 @@ export const siteContent = {
     {
       icon: "🏥",
       title: "Health Department",
-      description: "Qualified healthcare professionals for medical facilities",
+      description: "Qualified healthcare professionals for hospitals, clinics, and home care units across specialized departments",
       workers: "600+",
-      trades: ["Doctors", "Nurses (Male & Female)"]
+      trades: ["Doctors", "Nurses (Male & Female)", "ICU Nurses", "PICU Nurses", "NICU Nurses", "MICU Nurses", "Emergency Nurses", "Medical Ward Nurses", "Home Care Nurses", "Clinic Nurses"]
     },
     {
       icon: "⚙️",
@@ -429,11 +439,6 @@ export const siteContent = {
       description: "Best Staffing Agency 2024"
     },
     {
-      icon: "✅",
-      title: "ISO Certified",
-      description: "Quality Management System"
-    },
-    {
       icon: "🔒",
       title: "Data Security",
       description: "GDPR Compliant"
@@ -455,11 +460,6 @@ export const siteContent = {
 
   // Trust Indicators
   trustIndicators: [
-    {
-      icon: "✓",
-      label: "ISO Certified",
-      color: "primary"
-    },
     {
       icon: "✓",
       label: "GDPR Compliant", 

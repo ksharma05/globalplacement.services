@@ -279,10 +279,6 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex flex-wrap items-center gap-6">
               <div className="flex items-center gap-2">
-                <div className="badge badge-primary badge-sm">✓</div>
-                <span className="text-sm text-base-content/80">ISO Certified</span>
-              </div>
-              <div className="flex items-center gap-2">
                 <div className="badge badge-secondary badge-sm">✓</div>
                 <span className="text-sm text-base-content/80">GDPR Compliant</span>
               </div>
